@@ -15,11 +15,11 @@
 
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { serveStatic } from "@hono/node-server/serve-static";
 import type { Context, Next } from "hono";
 import { logger } from "hono/logger";
 import { serve } from "@hono/node-server";
 import { decode, verify } from "@farcaster/jfs";
-import { readFileSync } from "node:fs";
 import { getSnap, upsertSnap, getSnapState, setSnapStateBulk, getDb, listSnaps, deleteSnap } from "./db.js";
 import { validateSnapResponse } from "@farcaster/snap";
 import { ensureMigrated, setSnapMeta, deleteSnapMeta } from "./handlers.js";
@@ -403,8 +403,17 @@ app.route("/api/status", statusRoutes);
 // Landing page — GET / (must be before /:id catch-all)
 // ---------------------------------------------------------------------------
 
-app.get("/", (c) => {
-  return c.html(readFileSync(new URL("index.html", import.meta.url), "utf8"));
+// ---------------------------------------------------------------------------
+// Landing page — serve Vite build
+// ---------------------------------------------------------------------------
+
+// Serve Vite build assets (JS, CSS, etc.)
+app.use("/assets/*", serveStatic({ root: "./web/dist" }));
+
+app.get("/", async (c) => {
+  const { readFile } = await import("node:fs/promises");
+  const html = await readFile(new URL("../web/dist/index.html", import.meta.url), "utf8");
+  return c.html(html);
 });
 
 // ---------------------------------------------------------------------------
