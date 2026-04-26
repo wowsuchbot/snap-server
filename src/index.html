@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>snap.mxjxn.com — Template-based Snap Server</title>
+<meta name="description" content="Self-hosted snap server with 13 template types. Deploy interactive Farcaster snaps from natural language in under 15 seconds.">
+<meta property="og:title" content="snap.mxjxn.com — Template-based Snap Server">
+<meta property="og:description" content="Deploy interactive Farcaster snaps in under 15 seconds. 13 template types, one API call.">
+<meta property="og:url" content="https://snap.mxjxn.com">
+<meta property="og:type" content="website">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.6; }
+  a { color: #8b5cf6; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { background: #1a1a2e; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #c4b5fd; }
+  pre { background: #1a1a2e; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 12px 0; font-size: 0.85em; }
+  pre code { background: none; padding: 0; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 1.8em; margin-bottom: 8px; }
+  h2 { font-size: 1.3em; margin: 32px 0 12px; color: #c4b5fd; }
+  h3 { font-size: 1.1em; margin: 20px 0 8px; }
+  p { margin: 8px 0; }
+  .subtitle { color: #888; margin-bottom: 32px; }
+  .badge { display: inline-block; background: #1a1a2e; color: #8b5cf6; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; margin-right: 6px; margin-bottom: 6px; }
+  .template-card { background: #111; border: 1px solid #222; border-radius: 8px; padding: 16px; margin: 8px 0; }
+  .template-card h3 { margin-top: 0; }
+  .template-card .desc { color: #888; font-size: 0.9em; }
+  .template-card .example { margin-top: 8px; }
+  .demo-link { display: inline-block; background: #8b5cf6; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 0.85em; margin-top: 6px; }
+  .demo-link:hover { background: #7c3aed; text-decoration: none; }
+  .section { margin: 24px 0; }
+  .stat { display: inline-block; background: #111; border: 1px solid #222; border-radius: 8px; padding: 12px 20px; margin: 4px 8px 4px 0; text-align: center; }
+  .stat .num { font-size: 1.5em; font-weight: bold; color: #c4b5fd; }
+  .stat .label { font-size: 0.8em; color: #666; }
+  hr { border: none; border-top: 1px solid #222; margin: 32px 0; }
+  .try-section { background: #111; border: 1px solid #8b5cf6; border-radius: 8px; padding: 20px; margin: 24px 0; }
+  .try-section h2 { color: #8b5cf6; margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>snap.mxjxn.com</h1>
+<p class="subtitle">Template-based snap server for Farcaster — deploy interactive snaps in one API call.</p>
+
+<div>
+  <span class="stat"><span class="num" id="snap-count">50+</span><span class="label">snaps deployed</span></span>
+  <span class="stat"><span class="num">13</span><span class="label">template types</span></span>
+  <span class="stat"><span class="num">&lt;15s</span><span class="label">deploy time</span></span>
+</div>
+
+<h2>What is this?</h2>
+<p>A self-hosted server that lets you deploy interactive Farcaster snaps using simple template slots instead of hand-crafting raw JSON. Used by <a href="https://warpcast.com/wowsuchbot" target="_blank">@suchbot</a> to serve snaps to the Farcaster timeline.</p>
+
+<div class="try-section">
+<h2>⚡ Try it — under 60 seconds</h2>
+<p>On Farcaster, mention <strong>@suchbot</strong> and ask for any interactive snap:</p>
+<h3>Examples</h3>
+<ul style="padding-left:20px; margin:8px 0;">
+  <li><code>@suchbot make a poll: what's the best L2?</code></li>
+  <li><code>@suchbot create a tip jar for me</code></li>
+  <li><code>@suchbot make a tutorial about Farcaster snaps</code></li>
+  <li><code>@suchbot quiz me on crypto</code></li>
+  <li><code>@suchbot rate: how good is Base chain?</code></li>
+</ul>
+<p>You'll get a live, interactive snap back in seconds.</p>
+</div>
+
+<h2>Template Types</h2>
+
+<div class="template-card">
+  <span class="badge">interactive</span>
+  <h3>📊 Polls</h3>
+  <p class="desc">Server-side vote tracking with per-FID deduplication and live results.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/farcon-rome-poll" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">interactive</span>
+  <h3>🧠 Quizzes</h3>
+  <p class="desc">Multi-page quizzes with scoring, answer tracking, and results pages.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/thinker-quiz-apr25b-0" target="_blank">Live demo (4 pages)</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">interactive</span>
+  <h3>⭐ Ratings</h3>
+  <p class="desc">Slider-based ratings with per-FID tracking and average display.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/test-rating" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">interactive</span>
+  <h3>📝 Text Entry</h3>
+  <p class="desc">Free-text input with server-side storage and confirmation.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/test-text-entry" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">interactive</span>
+  <h3>🎁 Claims</h3>
+  <p class="desc">One-per-user claim tracking with count display.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/test-claim-1" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">token action</span>
+  <h3>💰 Tip Jars</h3>
+  <p class="desc">Native wallet tip buttons — USDC on Base, or any ERC-20.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/suchbot-tip-v3" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">token action</span>
+  <h3>🔄 Token Buy</h3>
+  <p class="desc">Native swap button — buy any token directly from a snap.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/test-token-buy" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">token action</span>
+  <h3>📈 Token Showcase</h3>
+  <p class="desc">Display any token with optional buy/send actions.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/test-token-showcase" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">informational</span>
+  <h3>📖 Tutorials</h3>
+  <p class="desc">Multi-page guides with navigation buttons.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/arya-is-coming-0" target="_blank">Live demo (4 pages)</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">informational</span>
+  <h3>💡 Explainers</h3>
+  <p class="desc">Single-page concept breakdowns with key points.</p>
+  <div class="example">
+    <a class="demo-link" href="https://snap.mxjxn.com/explainer-moen8r74-0" target="_blank">Live demo</a>
+  </div>
+</div>
+
+<div class="template-card">
+  <span class="badge">informational</span>
+  <h3>📋 Cheat Sheets</h3>
+  <p class="desc">Dense reference cards with grouped sections.</p>
+</div>
+
+<div class="template-card">
+  <span class="badge">informational</span>
+  <h3>⚖️ Comparisons</h3>
+  <p class="desc">Side-by-side option comparisons.</p>
+</div>
+
+<div class="template-card">
+  <span class="badge">informational</span>
+  <h3>🔗 Resource Lists</h3>
+  <p class="desc">Curated link directories with tappable items.</p>
+</div>
+
+<h2>API</h2>
+<p>Deploy any template with a single API call:</p>
+<pre><code>curl -X POST https://snap.mxjxn.com/api/templates/poll \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "id": "my-poll",
+    "question": "Are agents first-class Farcaster citizens?",
+    "options": ["Yes", "Not yet", "Need more infra"],
+    "theme": "purple"
+  }'</code></pre>
+<p>Returns: <code>{ "template": "poll", "pages": [{ "id": "my-poll", "url": "https://snap.mxjxn.com/my-poll" }] }</code></p>
+
+<h2>How it works</h2>
+<p>Instead of generating 2000+ tokens of raw snap JSON (slow, error-prone), the agent generates ~50 tokens of slot data. The template engine produces schema-validated snap JSON instantly.</p>
+<pre><code>Agent generates:  { "question": "...", "options": [...] }
+                          ↓
+Template engine:   expand("poll", slots) → valid snap JSON
+                          ↓
+One API call:      POST /api/templates/poll → deployed & live
+                          ↓
+Reply to user:     "Here's your poll: snap.mxjxn.com/my-poll"</code></pre>
+
+<hr>
+
+<h2>Built by</h2>
+<p><a href="https://warpcast.com/wowsuchbot" target="_blank">@suchbot</a> — autonomous agent on Farcaster</p>
+<p><a href="https://github.com/wowsuchbot/suchbot" target="_blank">GitHub</a> · <a href="https://farhack.xyz/hackathons/farhack-online-2026" target="_blank">FarHack Online 2026</a></p>
+
+</div>
+</body>
+</html>
